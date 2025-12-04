@@ -21,22 +21,9 @@ pontos_medios <- tribble(
   "P", 17.5,
   "Q", 22.5,
 )
-dicionario <- tribble(
-  ~CO_MUNICIPIO_PROVA, ~NO_MUNICIPIO_PROVA,
-  1300201, "Atalaia do Norte / AM",
-  1300607, "Benjamin Constant / AM",
-  1301951, "Itamarati / AM",
-  1302108, "Japurá / AM",
-  1304237, "Tonantins / AM",
-  2301604, "Assaré / CE",
-  2704302, "Maceió / AL",
-  3205309, "Vitória / ES",
-  3556206, "Valinhos / SP",
-  3556701, "Vinhedo/ SP"
-  )
 
-conferencia <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS/PARTICIPANTES_2024.csv") %>%
-  distinct(CO_MUNICIPIO_PROVA, .keep_all = TRUE)
+IBGE <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/IBGE/RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.csv") %>%
+  select(Código_Município_Completo, Nome_Município)
 renda <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS/PARTICIPANTES_2024.csv") %>%
   left_join(pontos_medios) %>%
   mutate(RENDA = ponto_medio / Q005) %>%
@@ -48,13 +35,15 @@ nota <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS
   summarise(NOTA_MEDIA = mean(NOTA, na.rm = TRUE))
 
 resultado <- renda %>% left_join(nota)
-highlights <- resultado %>%
+municipios <- resultado %>% left_join(IBGE, by = c("CO_MUNICIPIO_PROVA" = "Código_Município_Completo"))
+
+highlights <- municipios %>%
   filter(NOTA_MEDIA < 650 | NOTA_MEDIA > 875| RENDA_MEDIA > 1.75|
-          CO_MUNICIPIO_PROVA == 3205309 | CO_MUNICIPIO_PROVA == 2704302 | CO_MUNICIPIO_PROVA == 2301604)
-municipios <- dicionario %>% left_join(highlights)
-ggplot(data = resultado, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
+         Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré")
+
+ggplot(data = municipios, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point() + geom_smooth(method = "lm") + theme_bw() +
-  geom_label_repel(data = municipios, aes(label = NO_MUNICIPIO_PROVA)) +
+  geom_label_repel(data = municipios, aes(label = Nome_Município)) +
   geom_point(data = municipios, color = "red") +
   labs(title = "Médias de nota e renda por município",
        x = "Renda média (Salários mínimos)",
