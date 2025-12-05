@@ -1,7 +1,10 @@
 library(tidyverse)
 library(corrplot)
 
-regions <- read.csv2("data/regions.csv")
+files <- list.files("data", pattern = "regions_.*\\.csv$", full.names = TRUE)
+
+regions <- files |>
+  map_df(read.csv2)
 
 # Prepare data to plot
 regions_long <- regions |>
@@ -53,11 +56,11 @@ ggplot(regions_long, aes(x = MEDIA_RENDA, y = NOTA, color = REGIAO)) +
   ) +
   facet_wrap(~ DISCIPLINA, scales = "free_y", ncol = 3) +
   labs(
-    title = "Relação entre renda média per capita e notas médias do ENEM por região em 2024",
-    x = "Renda média per capita",
+    title = "Relação entre renda per capita média dos participantes e notas médias do ENEM por região (2023-2024)",
+    x = "Renda per capita média (salários mínimos)",
     y = "Nota média",
     color = "Região",
-    caption = "Fonte: INEP – Microdados ENEM 2024"
+    caption = "Fonte: INEP – Microdados ENEM"
   ) +
   theme_minimal() +
   theme(
@@ -86,7 +89,7 @@ corrplot(
 )
 
 title(
-  main = "Correlação entre renda média per capita e notas médias do ENEM por região",
+  main = "Correlação entre renda per capita média dos participantes e notas médias do ENEM por região",
   cex.main = 1.4,
   font.main = 2,
   line = 1.5
@@ -98,3 +101,36 @@ mtext(
   line = 3,
   cex = 0.9,
 )
+
+# Linha temporal
+ggplot(regions, aes(ANO, MEDIA_MEDIA_SIMPLES, color = REGIAO)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  scale_x_continuous(breaks = unique(regions$ANO)) +
+  labs(
+    title = "Evolução das notas médias do ENEM por região",
+    x = "Ano",
+    y = "Nota média",
+    color = "Região",
+    caption = "Fonte: INEP – Microdados ENEM",
+  ) +
+  theme_minimal() +
+  theme(
+    plot.caption = element_text(size = 10, hjust = 0)
+  )
+
+ggplot(regions, aes(ANO, MEDIA_RENDA, color = REGIAO)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  scale_x_continuous(breaks = unique(regions$ANO)) +
+  labs(
+    title = "Evolução da renda per capita média dos participantes do ENEM por região",
+    x = "Ano",
+    y = "Renda per capita média (salários mínimos)",
+    color = "Região",
+    caption = "Fonte: INEP – Microdados ENEM",
+  ) +
+  theme_minimal() +
+  theme(
+    plot.caption = element_text(size = 10, hjust = 0)
+  )
