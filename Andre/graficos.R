@@ -41,8 +41,9 @@ nota <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS
   summarise(NOTA_MEDIA = mean(NOTA, na.rm = TRUE)) %>%
   left_join(IBGE, by = c("CO_MUNICIPIO_PROVA" = "Código_Município_Completo")) %>%
   rename(code_muni = CO_MUNICIPIO_PROVA)
-resultado <- renda %>% left_join(nota)
-highlights <- resultados %>%
+resultado <- renda %>% left_join(nota) %>%
+  mutate(RAZAO = NOTA_MEDIA / (1000 * RENDA_MEDIA))
+highlights <- resultado %>%
   filter(NOTA_MEDIA < 650 | NOTA_MEDIA > 875| RENDA_MEDIA > 1.75|
          Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré")
 municipios <- read_municipality(year = 2024)
@@ -53,7 +54,7 @@ mapa <- municipios %>%
 
 
 # Graph 1
-ggplot(data = resultados, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
+ggplot(data = resultado, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point() + geom_smooth(method = "lm") + theme_bw() +
   geom_label_repel(data = highlights, aes(label = Nome_Município)) +
   geom_point(data = highlights, color = "red") +
@@ -66,7 +67,7 @@ ggplot(mapa) + theme_bw() +
   geom_sf(aes(fill = na_lista), color = NA) +
   scale_fill_manual(values = c("Presente" = "blue", "Ausente" = "red")) +
   labs(title = "Municípios com polos de aplicação",
-       fill = "Situação")
+       fill = "Situação") +
   geom_sf(fill = NA, color = "black", data = estados)
 
 # Graph 3
