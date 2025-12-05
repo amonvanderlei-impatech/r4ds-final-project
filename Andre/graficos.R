@@ -1,6 +1,9 @@
+# Libraries
 library(tidyverse)
 library(ggrepel)
+library(geobr)
 
+# Income auxiliar table
 pontos_medios <- tribble(
   ~Q007, ~ponto_medio,
   "A", 0,
@@ -22,6 +25,7 @@ pontos_medios <- tribble(
   "Q", 22.5,
 )
 
+# Data
 IBGE <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/IBGE/RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.csv") %>%
   select(Código_Município_Completo, Nome_Município)
 renda <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS/PARTICIPANTES_2024.csv") %>%
@@ -34,13 +38,18 @@ nota <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS
   group_by(CO_MUNICIPIO_PROVA) %>%
   summarise(NOTA_MEDIA = mean(NOTA, na.rm = TRUE))
 
+# Joining data
 resultado <- renda %>% left_join(nota)
-municipios <- resultado %>% left_join(IBGE, by = c("CO_MUNICIPIO_PROVA" = "Código_Município_Completo"))
+municipios <- resultado %>%
+  left_join(IBGE, by = c("CO_MUNICIPIO_PROVA" = "Código_Município_Completo")) %>%
+  rename(code_muni = CO_MUNICIPIO_PROVA)
 
+# Filtering data
 highlights <- municipios %>%
   filter(NOTA_MEDIA < 650 | NOTA_MEDIA > 875| RENDA_MEDIA > 1.75|
          Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré")
 
+# Graph 1
 ggplot(data = municipios, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point() + geom_smooth(method = "lm") + theme_bw() +
   geom_label_repel(data = municipios, aes(label = Nome_Município)) +
@@ -48,3 +57,14 @@ ggplot(data = municipios, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   labs(title = "Médias de nota e renda por município",
        x = "Renda média (Salários mínimos)",
        y = "Nota média (Média aritimética)")
+
+# Graph 2
+mapa <- read_municipality(year = 2024)
+mapa_join <- mapa %>%
+  left_join(municipios, by = "code_muni") %>%
+  mutate(na_lista = ifelse(is.na(RENDA_MEDIA), "Ausente", "Presente"))
+ggplot(mapa_join) + theme_bw() +
+  geom_sf(aes(fill = na_lista), color = NA) +
+  scale_fill_manual(values = c("Presente" = "blue", "Ausente" = "red")) +
+  labs(title = "Municípios com polos de aplicação",
+       fill = "Situação")
