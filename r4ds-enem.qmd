@@ -4,23 +4,28 @@ format: pdf
 editor: visual
 ---
 
-## Quarto
+# Relação entre a renda dos participantes do ENEM e suas notas
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+A renda está ligada à nota? Como a diferença de renda afeta a nota?
 
-## Running Code
+## Introdução
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Em 2022, o rendimento dos 20% da população com os maiores rendimentos era cerca de 11 vezes o rendimento dos 20% com os menores rendimentos no Brasil. Dentre os países selecionados para esta comparação, o Brasil tinha a segunda maior desigualdade de rendimento (IBGE, 2025, p. 58). Além disso, **o ENEM é importante e estudantes de diferentes classes sociais participam**. Assim, este ~~estudo~~ busca explorar as relações entre a renda e as notas dos participantes do ENEM.
 
-```{r}
-1 + 1
-```
+## Objetivo
 
-You can add options to executable code like this
+Neste estudo, analisaremos os microdados do ENEM disponibilizados anualmente pelo INEP com o objetivo de entender **como a renda do participante se relaciona com as notas do ENEM** e **qual é o impacto das diferenças de renda na nota do participante**.
 
-```{r}
-#| echo: false
-2 * 2
-```
+## Descrição dos Dados / Material e Método
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Resultados
+
+## Discussão
+
+## Conclusão e Observações
+
+## Agradecimentos
+
+## Referências
+
+\[1\] IBGE. Síntese de indicadores sociais: uma análise das condições de vida da população brasileira: 2025. Rio de Janeiro: IBGE, 2025. Disponível em: <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102240.pdf>.
