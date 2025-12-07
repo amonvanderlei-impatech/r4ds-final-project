@@ -26,41 +26,26 @@ pontos_medios <- tribble(
 )
 
 # Data
-IBGE <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/IBGE/RELATORIO_DTB_BRASIL_2024_MUNICIPIOS.csv") %>%
-  select(Código_Município_Completo, Nome_Município)
-renda <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS/PARTICIPANTES_2024.csv") %>%
-  left_join(pontos_medios) %>%
-  mutate(RENDA = ponto_medio / Q005) %>%
-  group_by(CO_MUNICIPIO_PROVA) %>%
-  summarise(RENDA_MEDIA = mean(RENDA)) %>%
-  left_join(IBGE, by = c("CO_MUNICIPIO_PROVA" = "Código_Município_Completo")) %>%
-  rename(code_muni = CO_MUNICIPIO_PROVA)
-nota <- read_csv2("C:/Users/affur/OneDrive/Documentos/microdados_enem_2024/DADOS/RESULTADOS_2024.csv") %>%
-  mutate(NOTA = (NU_NOTA_CN + NU_NOTA_CH + NU_NOTA_LC + NU_NOTA_MT + NU_NOTA_REDACAO) / 25) %>%
-  group_by(CO_MUNICIPIO_PROVA) %>%
-  summarise(NOTA_MEDIA = mean(NOTA, na.rm = TRUE)) %>%
-  left_join(IBGE, by = c("CO_MUNICIPIO_PROVA" = "Código_Município_Completo")) %>%
-  rename(code_muni = CO_MUNICIPIO_PROVA)
-resultado <- renda %>% left_join(nota) %>%
-  mutate(RAZAO = NOTA_MEDIA / (1000 * RENDA_MEDIA))
-highlights <- resultado %>%
-  filter(NOTA_MEDIA < 650 | NOTA_MEDIA > 875| RENDA_MEDIA > 1.75|
+resultado2024 <- read_csv2("data/municipalities/municipios_2024.csv")
+highlights <- resultado2024 %>%
+  filter(NOTA_MEDIA < 400 | NOTA_MEDIA > 600| RENDA_MEDIA > 1.75|
          Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré")
 municipios <- read_municipality(year = 2024)
 estados <- read_state(year = 2020)
 mapa <- municipios %>%
-  left_join(resultado, by = "code_muni") %>%
+  left_join(resultado2024, by = "code_muni") %>%
   mutate(na_lista = ifelse(is.na(RENDA_MEDIA), "Ausente", "Presente"))
 
 
 # Graph 1
-ggplot(data = resultado, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
+ggplot(data = resultado2024, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point() + geom_smooth(method = "lm") + theme_bw() +
   geom_label_repel(data = highlights, aes(label = Nome_Município)) +
   geom_point(data = highlights, color = "red") +
   labs(title = "Médias de nota e renda por município",
        x = "Renda média (Salários mínimos)",
        y = "Nota média (Média aritimética)")
+ggsave("plots/municipalities/graph1.png")
 
 # Graph 2
 ggplot(mapa) + theme_bw() +
@@ -69,6 +54,7 @@ ggplot(mapa) + theme_bw() +
   labs(title = "Municípios com polos de aplicação",
        fill = "Situação") +
   geom_sf(fill = NA, color = "black", data = estados)
+ggsave("plots/municipalities/graph2.png")
 
 # Graph 3
 ggplot(mapa) + theme_bw() +
@@ -77,6 +63,7 @@ ggplot(mapa) + theme_bw() +
   labs(title = "Razão entre nota e renda",
        fill = "Razão") +
   geom_sf(fill = NA, color = "black", data = estados)
+ggsave("plots/municipalities/graph3.png")
 
 # Graph 4
 ggplot(mapa) + theme_bw() +
@@ -85,6 +72,7 @@ ggplot(mapa) + theme_bw() +
   labs(title = "Renda média dos alunos que realizaram a prova no municipio",
        fill = "Renda média (salários mínimos)") +
   geom_sf(fill = NA, color = "black", data = estados)
+ggsave("plots/municipalities/graph4.png")
 
 # Graph 5
 ggplot(mapa) + theme_bw() +
@@ -93,3 +81,4 @@ ggplot(mapa) + theme_bw() +
   labs(title = "Nota média dos alunos que realizaram a prova no municipio",
        fill = "Nota média") +
   geom_sf(fill = NA, color = "black", data = estados)
+ggsave("plots/municipalities/graph5.png")
