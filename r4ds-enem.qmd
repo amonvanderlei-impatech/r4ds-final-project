@@ -4,7 +4,7 @@ format: pdf
 editor: visual
 ---
 
-# Relação entre a renda dos participantes do ENEM e suas notas
+# Relação entre a renda dos participantes do ENEM e as suas notas
 
 A renda está ligada à nota? Como a diferença de renda afeta a nota?
 

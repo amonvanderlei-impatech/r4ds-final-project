@@ -1,7 +1,6 @@
 library(tidyverse)
-library(corrplot)
 
-files <- list.files("data", pattern = "regions_.*\\.csv$", full.names = TRUE)
+files <- list.files("data/regions", pattern = "regions_.*\\.csv$", full.names = TRUE)
 
 regions <- files |>
   map_df(read.csv2)
@@ -44,7 +43,7 @@ regions_long$DISCIPLINA <- factor(
 )
 
 # Scatter - Renda x Nota
-ggplot(regions_long, aes(x = MEDIA_RENDA, y = NOTA, color = REGIAO)) +
+graph_scatter <- ggplot(regions_long, aes(x = MEDIA_RENDA, y = NOTA, color = REGIAO)) +
   geom_point(size = 3) +
   geom_smooth(
     aes(group = 1),
@@ -56,7 +55,8 @@ ggplot(regions_long, aes(x = MEDIA_RENDA, y = NOTA, color = REGIAO)) +
   ) +
   facet_wrap(~ DISCIPLINA, scales = "free_y", ncol = 3) +
   labs(
-    title = "Relação entre renda per capita média dos participantes e notas médias do ENEM por região (2023-2024)",
+    title = "Relação entre renda per capita média dos participantes e notas médias do ENEM",
+    subtitle = "Por região e ano (2018-2024)",
     x = "Renda per capita média (salários mínimos)",
     y = "Nota média",
     color = "Região",
@@ -67,48 +67,66 @@ ggplot(regions_long, aes(x = MEDIA_RENDA, y = NOTA, color = REGIAO)) +
     plot.caption = element_text(size = 10, hjust = 0)
   )
 
-# Heatmap - correlação entre renda e nota
-df <- regions |> select(MEDIA_RENDA, starts_with("MEDIA_NOTA"))
-corr <- cor(df, use = "pairwise.complete.obs")
-col_pal <- colorRampPalette(c("#B2182B", "#FFFFFF", "#2166AC"))
+# Correlação entre renda e nota
+calc_corr_renda_notas <- function(df) {
+  df |>
+    summarise(
+      CN  = cor(MEDIA_RENDA, MEDIA_NOTA_CN,  use = "pairwise.complete.obs"),
+      CH  = cor(MEDIA_RENDA, MEDIA_NOTA_CH,  use = "pairwise.complete.obs"),
+      LC  = cor(MEDIA_RENDA, MEDIA_NOTA_LC,  use = "pairwise.complete.obs"),
+      MT  = cor(MEDIA_RENDA, MEDIA_NOTA_MT,  use = "pairwise.complete.obs"),
+      RED = cor(MEDIA_RENDA, MEDIA_NOTA_REDACAO, use = "pairwise.complete.obs")
+    ) |>
+    pivot_longer(everything(),
+                 names_to = "DISCIPLINA",
+                 values_to = "CORRELACAO"
+    )
+}
 
-par(mar = c(5, 5, 5, 6)) 
+corr_ano <- regions |>
+  group_by(ANO) |>
+  group_modify(~ calc_corr_renda_notas(.x)) |>
+  ungroup()
 
-corrplot(
-  corr,
-  method = "color",
-  col = col_pal(200),
-  addCoef.col = "black",
-  tl.col = "black",
-  tl.srt = 45,
-  number.cex = 0.9,
-  tl.cex = 0.9,
-  cl.cex = 0.8,
-  diag = FALSE,
-  mar = c(2,0,0,0)
-)
+corr_total <- calc_corr_renda_notas(regions) |>
+  mutate(ANO = "2018–2024")
 
-title(
-  main = "Correlação entre renda per capita média dos participantes e notas médias do ENEM por região",
-  cex.main = 1.4,
-  font.main = 2,
-  line = 1.5
-)
+corr_all <- bind_rows(
+  corr_ano |> mutate(ANO = as.character(ANO)),
+  corr_total
+) |>
+  mutate(
+    ANO = factor(
+      ANO,
+      levels = c(as.character(2018:2024), "2018–2024")
+    )
+  )
 
-mtext(
-  "Fonte: INEP – Microdados ENEM",
-  side = 1,
-  line = 3,
-  cex = 0.9,
-)
+graph_corr <- ggplot(corr_all, aes(x = DISCIPLINA, y = CORRELACAO)) +
+  geom_col(fill = "#2166AC") +
+  geom_text(aes(label = round(CORRELACAO, 2)), vjust = 1.5, color = "white") +
+  facet_wrap(~ ANO, ncol = 3) +
+  labs(
+    title = "Correlação entre renda per capita média e notas médias do ENEM ",
+    subtitle = "Por disciplina e ano (2018-2024)",
+    x = "Disciplina",
+    y = "Correlação",
+    caption = "Fonte: INEP – Microdados ENEM"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1),
+    plot.caption = element_text(size = 10, hjust = 0)
+  )
 
 # Linha temporal
-ggplot(regions, aes(ANO, MEDIA_MEDIA_SIMPLES, color = REGIAO)) +
+graph_notas_tempo <- ggplot(regions, aes(ANO, MEDIA_MEDIA_SIMPLES, color = REGIAO)) +
   geom_line(size = 1.2) +
   geom_point(size = 3) +
   scale_x_continuous(breaks = unique(regions$ANO)) +
   labs(
-    title = "Evolução das notas médias do ENEM por região",
+    title = "Evolução das notas médias do ENEM",
+    subtitle = "Por região e ano (2018-2024)",
     x = "Ano",
     y = "Nota média",
     color = "Região",
@@ -119,12 +137,13 @@ ggplot(regions, aes(ANO, MEDIA_MEDIA_SIMPLES, color = REGIAO)) +
     plot.caption = element_text(size = 10, hjust = 0)
   )
 
-ggplot(regions, aes(ANO, MEDIA_RENDA, color = REGIAO)) +
+graph_renda_tempo <- ggplot(regions, aes(ANO, MEDIA_RENDA, color = REGIAO)) +
   geom_line(size = 1.2) +
   geom_point(size = 3) +
   scale_x_continuous(breaks = unique(regions$ANO)) +
   labs(
-    title = "Evolução da renda per capita média dos participantes do ENEM por região",
+    title = "Evolução da renda per capita média dos participantes do ENEM",
+    subtitle = "Por região e ano (2018-2024)",
     x = "Ano",
     y = "Renda per capita média (salários mínimos)",
     color = "Região",
@@ -134,3 +153,8 @@ ggplot(regions, aes(ANO, MEDIA_RENDA, color = REGIAO)) +
   theme(
     plot.caption = element_text(size = 10, hjust = 0)
   )
+
+ggsave("plots/regions/scatter_renda_notas.png", graph_scatter, width = 10, height = 6, dpi = 320)
+ggsave("plots/regions/correlacao_por_ano.png", graph_corr, width = 10, height = 6, dpi = 320)
+ggsave("plots/regions/notas_tempo.png", graph_notas_tempo, width = 10, height = 6, dpi = 320)
+ggsave("plots/regions/renda_tempo.png", graph_renda_tempo, width = 10, height = 6, dpi = 320)
