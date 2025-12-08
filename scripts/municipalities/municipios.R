@@ -26,59 +26,102 @@ pontos_medios <- tribble(
 )
 
 # Data
-resultado2024 <- read_csv2("data/municipalities/municipios_2024.csv")
-highlights <- resultado2024 %>%
-  filter(NOTA_MEDIA < 400 | NOTA_MEDIA > 600| RENDA_MEDIA > 1.75|
-         Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré")
+resultado22 <- read_csv2("data/municipalities/municipios_2022.csv")
+resultado23 <- read_csv2("data/municipalities/municipios_2023.csv")
+resultado24 <- read_csv2("data/municipalities/municipios_2024.csv")
+entrou23 <- resultado23 %>% anti_join(resultado22, by = "code_muni")
+entrou24 <- resultado24 %>% anti_join(resultado23, by = "code_muni")
+highlight22 <- resultado22 %>% filter(Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré" | Nome_Município == "Japurá" | Nome_Município == "Vinhedo")
+highlight23 <- resultado23 %>% filter(Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré" | Nome_Município == "Japurá" | Nome_Município == "Vinhedo")
+highlight24 <- resultado24 %>% filter(Nome_Município == "Vitória" | Nome_Município == "Maceió" | Nome_Município == "Assaré" | Nome_Município == "Japurá" | Nome_Município == "Vinhedo")
+highlight <- bind_rows(highlight24, highlight23, highlight22)
 municipios <- read_municipality(year = 2024)
 estados <- read_state(year = 2020)
 mapa <- municipios %>%
-  left_join(resultado2024, by = "code_muni") %>%
-  mutate(na_lista = ifelse(is.na(RENDA_MEDIA), "Ausente", "Presente"))
+  mutate(origem = case_when(
+    code_muni %in% entrou23$code_muni ~ "entrou em 2023",
+    code_muni %in% entrou24$code_muni ~ "entrou em 2024",
+    code_muni %in% resultado22$code_muni ~ "estava em 2022",
+    TRUE ~ "não tem polo"
+  ))
+mapa24 <- municipios %>% left_join(resultado24)
 
-
-# Graph 1
-ggplot(data = resultado2024, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
+# Médias de nota e renda por municipio 2024
+ggplot(data = resultado24, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point() + geom_smooth(method = "lm") + theme_bw() +
-  geom_label_repel(data = highlights, aes(label = Nome_Município)) +
-  geom_point(data = highlights, color = "red") +
-  labs(title = "Médias de nota e renda por município",
+  geom_label_repel(data = highlight24, aes(label = Nome_Município)) +
+  geom_point(data = highlight24, color = "red") +
+  labs(title = "Médias de nota e renda por município (2024)",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritimética)")
-ggsave("plots/municipalities/graph1.png")
+       y = "Nota média (Média aritmética)")
+ggsave("plots/municipalities/medias24.png")
 
-# Graph 2
+# Médias de nota e renda por municipio 2023
+ggplot(data = resultado23, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
+  geom_point() + geom_smooth(method = "lm") + theme_bw() +
+  geom_label_repel(data = highlight23, aes(label = Nome_Município)) +
+  geom_point(data = highlight23, color = "red") +
+  labs(title = "Médias de nota e renda por município (2023)",
+       x = "Renda média (Salários mínimos)",
+       y = "Nota média (Média aritmética)")
+ggsave("plots/municipalities/medias23.png")
+
+# Médias de nota e renda por municipio 2022
+ggplot(data = resultado22, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
+  geom_point() + geom_smooth(method = "lm") + theme_bw() +
+  geom_label_repel(data = highlight22, aes(label = Nome_Município)) +
+  geom_point(data = highlight22, color = "red") +
+  labs(title = "Médias de nota e renda por município (2022)",
+       x = "Renda média (Salários mínimos)",
+       y = "Nota média (Média aritmética)")
+ggsave("plots/municipalities/medias22.png")
+
+#Série temporal de médias de renda e notas de municípios selecionados
+ggplot(data = highlight, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA, color = ANO)) +
+  geom_point()+ theme_bw() +
+  scale_color_viridis_c(option = "plasma", direction = -1) +
+  geom_label_repel(data = highlight22, aes(label = Nome_Município), color = "black", max.overlaps = 1) +
+  labs(title = "Série temporal de médias de renda e notas de municípios selecionados",
+       x = "Renda média (Salários mínimos)",
+       y = "Nota média (Média aritmética)")
+ggsave("plots/municipalities/medias_temporais.png")
+
+# Municipios com polos de aplicação
 ggplot(mapa) + theme_bw() +
-  geom_sf(aes(fill = na_lista), color = NA) +
-  scale_fill_manual(values = c("Presente" = "blue", "Ausente" = "red")) +
+  geom_sf(aes(fill = origem), color = NA) +
+  scale_fill_manual(values = c(
+    "entrou em 2023" = "green",
+    "entrou em 2024" = "red",
+    "estava em 2022" = "blue",
+    "não aplica" = "grey")) +
   labs(title = "Municípios com polos de aplicação",
        fill = "Situação") +
   geom_sf(fill = NA, color = "black", data = estados)
-ggsave("plots/municipalities/graph2.png")
+ggsave("plots/municipalities/polos.png")
 
-# Graph 3
-ggplot(mapa) + theme_bw() +
-  geom_sf(aes(fill = RAZAO), color = NA) +
-  scale_fill_viridis_c(option = "plasma", direction = -1) +
-  labs(title = "Razão entre nota e renda",
-       fill = "Razão") +
-  geom_sf(fill = NA, color = "black", data = estados)
-ggsave("plots/municipalities/graph3.png")
-
-# Graph 4
-ggplot(mapa) + theme_bw() +
+# Renda média
+ggplot(mapa24) + theme_bw() +
   geom_sf(aes(fill = RENDA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Renda média dos alunos que realizaram a prova no municipio",
        fill = "Renda média (salários mínimos)") +
   geom_sf(fill = NA, color = "black", data = estados)
-ggsave("plots/municipalities/graph4.png")
+ggsave("plots/municipalities/renda24.png")
 
-# Graph 5
-ggplot(mapa) + theme_bw() +
+# Nota média
+ggplot(mapa24) + theme_bw() +
   geom_sf(aes(fill = NOTA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Nota média dos alunos que realizaram a prova no municipio",
        fill = "Nota média") +
   geom_sf(fill = NA, color = "black", data = estados)
-ggsave("plots/municipalities/graph5.png")
+ggsave("plots/municipalities/nota24.png")
+
+# Razão entre nota e renda
+ggplot(mapa24) + theme_bw() +
+  geom_sf(aes(fill = RAZAO), color = NA) +
+  scale_fill_viridis_c(option = "plasma", direction = -1) +
+  labs(title = "Razão entre nota e renda",
+       fill = "Razão") +
+  geom_sf(fill = NA, color = "black", data = estados)
+ggsave("plots/municipalities/razao24.png")
