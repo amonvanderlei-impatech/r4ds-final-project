@@ -4,19 +4,45 @@ format: pdf
 editor: visual
 ---
 
-# Relação entre a renda dos participantes do ENEM e as suas notas
-
-A renda está ligada à nota? Como a diferença de renda afeta a nota?
+# Análise da relação entre a renda dos participantes do ENEM e seu desempenho
 
 ## Introdução
 
-Em 2022, o rendimento dos 20% da população com os maiores rendimentos era cerca de 11 vezes o rendimento dos 20% com os menores rendimentos no Brasil. Dentre os países selecionados para esta comparação, o Brasil tinha a segunda maior desigualdade de rendimento (IBGE, 2025, p. 58). Além disso, **o ENEM é importante e estudantes de diferentes classes sociais participam**. Assim, este ~~estudo~~ busca explorar as relações entre a renda e as notas dos participantes do ENEM.
+Em 2022, no Brasil, os 20% da população com maiores rendimentos tinham um rendimento cerca de 11 vezes superior ao dos 20% da população com menores rendimentos e, dentre os países selecionados para esta comparação, o país ocupava a segunda maior desigualdade de rendimento (IBGE, 2025, p. 58). Nesse contexto, o Exame Nacional do Ensino Médio (ENEM), uma prova do Governo Federal do Brasil, mensura o desempenho individual dos participantes de diferentes realidades socioeconômicas, gerando os indicadores educacionais do país. Assim, esta análise busca investigar a relação entre a renda e o desempenho dos participantes no ENEM.
 
 ## Objetivo
 
-Neste estudo, analisaremos os microdados do ENEM disponibilizados anualmente pelo INEP com o objetivo de entender **como a renda do participante se relaciona com as notas do ENEM** e **qual é o impacto das diferenças de renda na nota do participante**.
+Nesta análise, utilizaremos os microdados do ENEM disponibilizados anualmente pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) com o objetivo de entender qual é a relação entre a renda do participante e seu desempenho no ENEM e como a diferença de renda dos participantes impacta suas notas.
 
-## Descrição dos Dados / Material e Método
+## Material e Método
+
+Para tal, selecionamos os microdados do ENEM entre os anos de 2020 e 2024. Os dados de 2024 estão divididos em duas tabelas, as quais agrupamos por regiões, estados ou cidades e por ano, obtendo médias de renda e de notas pelos respectivos agrupamentos. Por outro lado, os dados de 2018 a 2023 estão em uma mesma tabela e obtemos diretamente as médias de renda e notas.
+
+Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. A fim de garantir a comparabilidade dos valores ao longo do tempo, todas as rendas foram expressas em salários mínimos.
+
+Como o questionário apresenta a renda em faixas, adotamos o ponto médio de cada intervalo como valor representativo da renda mensal familiar. No caso da faixa aberta “Acima de 20 salários mínimos”, convencionamos o valor de 22,5 salários mínimos. Em seguida, a renda mensal familiar foi dividida pelo número de membros da família, resultando na renda mensal per capita, utilizada em todas as análises relacionadas à renda.
+
+A Tabela a seguir apresenta os intervalos de renda do questionário socioeconômico e os respectivos valores adotados neste estudo.
+
+| Intervalo de renda familiar (em salários mínimos) | Valor adotado (em salários mínimos) |
+|------------------------------------------|------------------------------|
+| Sem renda | 0,0 |
+| Até 1 | 0,5 |
+| De 1 a 1,5 | 1,25 |
+| De 1,5 a 2 | 1,75 |
+| De 2 a 2,5 | 2,25 |
+| De 2,5 a 3 | 2,75 |
+| De 3 a 4 | 3,5 |
+| De 4 a 5 | 4,5 |
+| De 5 a 6 | 5,5 |
+| De 6 a 7 | 6,5 |
+| De 7 a 8 | 7,5 |
+| De 8 a 9 | 8,5 |
+| De 9 a 10 | 9,5 |
+| De 10 a 12 | 11,0 |
+| De 12 a 15 | 13,5 |
+| De 15 a 20 | 17,5 |
+| Acima de 20 | 22,5 |
 
 ## Resultados
 
