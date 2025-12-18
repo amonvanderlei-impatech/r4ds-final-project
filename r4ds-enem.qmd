@@ -16,15 +16,15 @@ Nesta análise, utilizaremos os microdados do ENEM disponibilizados anualmente p
 
 ## Material e Método
 
-Para tal, selecionamos os microdados do ENEM entre os anos de 2020 e 2024. Os dados de 2024 estão divididos em duas tabelas, as quais agrupamos por regiões, estados ou cidades e por ano, obtendo médias de renda e de notas pelos respectivos agrupamentos. Por outro lado, os dados de 2018 a 2023 estão em uma mesma tabela e obtemos diretamente as médias de renda e notas.
+Para tal, selecionamos os microdados do ENEM entre os anos de 2020 e 2024. Os dados de 2024 estão divididos em duas tabelas, as quais agrupamos por regiões, estados ou cidades e por ano, obtendo médias de renda e de notas pelos respectivos agrupamentos. Por outro lado, os dados de 2020 a 2023 estão em uma mesma tabela e obtemos diretamente as médias de renda e notas.
 
-Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. A fim de garantir a comparabilidade dos valores ao longo do tempo, todas as rendas foram expressas em salários mínimos.
+Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. Como explicitado na Figura **1**, o valor do salário mínimo difere ao longo do tempo; por esse motivo, todas as rendas foram expressas em salários mínimos para garantir a comparabilidade dos valores.
 
-Como o questionário apresenta a renda em faixas, adotamos o ponto médio de cada intervalo como valor representativo da renda mensal familiar. No caso da faixa aberta “Acima de 20 salários mínimos”, convencionamos o valor de 22,5 salários mínimos. Em seguida, a renda mensal familiar foi dividida pelo número de membros da família, resultando na renda mensal per capita, utilizada em todas as análises relacionadas à renda.
+Como o questionário apresenta a renda em faixas, adotamos o ponto médio de cada intervalo como valor representativo da renda mensal familiar. No caso da faixa aberta "Acima de 20 salários mínimos", convencionamos o valor de 22,5 salários mínimos. Em seguida, a renda mensal familiar foi dividida pelo número de membros da família, resultando na renda mensal per capita, utilizada em todas as análises relacionadas à renda.
 
 A Tabela a seguir apresenta os intervalos de renda do questionário socioeconômico e os respectivos valores adotados neste estudo.
 
-| Intervalo de renda familiar (em salários mínimos) | Valor adotado (em salários mínimos) |
+| Intervalo de renda familiar (salários mínimos) | Valor adotado (salários mínimos) |
 |------------------------------------------|------------------------------|
 | Sem renda | 0,0 |
 | Até 1 | 0,5 |
@@ -44,9 +44,37 @@ A Tabela a seguir apresenta os intervalos de renda do questionário socioeconôm
 | De 15 a 20 | 17,5 |
 | Acima de 20 | 22,5 |
 
+<!-- TODO: Explicar municípios selecionados e outras coisas necessárias -->
+
 ## Resultados
 
+A Figura **1** apresenta a evolução da renda per capita média dos participantes do ENEM entre 2020 e 2024, segundo as regiões do Brasil. Observa-se a persistência de diferenças regionais ao longo do período analisado, com regiões historicamente mais desenvolvidas apresentando níveis médios de renda per capita superiores às demais. Apesar de variações ao longo do tempo, o padrão relativo entre regiões permanece estável.
+
+**Figura 1 – Evolução da renda per capita média dos participantes do ENEM, por região (2020–2024)**
+
+![](plots/regions/renda_tempo.png)
+
+A Figura **2** mostra a evolução das notas médias do ENEM no mesmo período. De forma semelhante ao observado para a renda, as notas médias também apresentam diferenças regionais consistentes ao longo do tempo, ainda que com menor amplitude relativa.
+
+**Figura 2 – Evolução das notas médias do ENEM, por região (2020–2024)**
+
+![](plots/regions/notas_tempo.png)
+
+A relação direta entre renda per capita média e desempenho no ENEM é explorada na Figura **3**, que apresenta a dispersão entre essas duas variáveis para cada disciplina. Em todas elas, observa-se uma associação positiva, indicando que regiões com maior renda per capita média tendem a apresentar notas médias mais elevadas. No entanto, a intensidade dessa relação varia entre as áreas de conhecimento, com maior dispersão observada em algumas disciplinas.
+
+**Figura 3 – Relação entre renda per capita média dos participantes e notas médias do ENEM, por disciplina e por região**
+
+![](plots/regions/scatter_renda_notas.png)
+
+Por fim, a Figura **4** apresenta os coeficientes de correlação entre renda per capita média e notas médias do ENEM, estimados por disciplina e por ano, além do período agregado. Os resultados indicam correlações positivas e relativamente estáveis ao longo do tempo, com valores mais elevados observados, em geral, para Matemática, Ciências Humanas e Ciências da Natureza, reforçando a associação observada nos gráficos de dispersão.
+
+**Figura 4 – Correlação entre renda per capita média e notas médias do ENEM, por disciplina e ano**
+
+![](plots/regions/correlacao_por_ano.png)
+
 ## Discussão
+
+<!-- TODO: Por que as diferenças existem? Limitações e implicações -->
 
 ## Conclusão e Observações
 

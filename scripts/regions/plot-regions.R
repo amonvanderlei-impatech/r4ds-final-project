@@ -56,7 +56,7 @@ graph_scatter <- ggplot(regions_long, aes(x = MEDIA_RENDA, y = NOTA, color = REG
   facet_wrap(~ DISCIPLINA, scales = "free_y", ncol = 3) +
   labs(
     title = "Relação entre renda per capita média dos participantes e notas médias do ENEM",
-    subtitle = "Por região e ano (2018-2024)",
+    subtitle = "Por região e ano (2020-2024)",
     x = "Renda per capita média (salários mínimos)",
     y = "Nota média",
     color = "Região",
@@ -89,7 +89,7 @@ corr_ano <- regions |>
   ungroup()
 
 corr_total <- calc_corr_renda_notas(regions) |>
-  mutate(ANO = "2018–2024")
+  mutate(ANO = "2020–2024")
 
 corr_all <- bind_rows(
   corr_ano |> mutate(ANO = as.character(ANO)),
@@ -98,7 +98,7 @@ corr_all <- bind_rows(
   mutate(
     ANO = factor(
       ANO,
-      levels = c(as.character(2018:2024), "2018–2024")
+      levels = c(as.character(2020:2024), "2020–2024")
     )
   )
 
@@ -107,8 +107,8 @@ graph_corr <- ggplot(corr_all, aes(x = DISCIPLINA, y = CORRELACAO)) +
   geom_text(aes(label = round(CORRELACAO, 2)), vjust = 1.5, color = "white") +
   facet_wrap(~ ANO, ncol = 3) +
   labs(
-    title = "Correlação entre renda per capita média e notas médias do ENEM ",
-    subtitle = "Por disciplina e ano (2018-2024)",
+    title = "Correlação entre renda per capita média e notas médias do ENEM",
+    subtitle = "Por disciplina e ano (2020-2024)",
     x = "Disciplina",
     y = "Correlação",
     caption = "Fonte: INEP – Microdados ENEM"
@@ -126,7 +126,7 @@ graph_notas_tempo <- ggplot(regions, aes(ANO, MEDIA_MEDIA_SIMPLES, color = REGIA
   scale_x_continuous(breaks = unique(regions$ANO)) +
   labs(
     title = "Evolução das notas médias do ENEM",
-    subtitle = "Por região e ano (2018-2024)",
+    subtitle = "Por região e ano (2020-2024)",
     x = "Ano",
     y = "Nota média",
     color = "Região",
@@ -143,7 +143,7 @@ graph_renda_tempo <- ggplot(regions, aes(ANO, MEDIA_RENDA, color = REGIAO)) +
   scale_x_continuous(breaks = unique(regions$ANO)) +
   labs(
     title = "Evolução da renda per capita média dos participantes do ENEM",
-    subtitle = "Por região e ano (2018-2024)",
+    subtitle = "Por região e ano (2020-2024)",
     x = "Ano",
     y = "Renda per capita média (salários mínimos)",
     color = "Região",
