@@ -4,28 +4,32 @@ format: pdf
 editor: visual
 ---
 
-# Análise da relação entre a renda dos participantes do ENEM e seu desempenho
+AMON CHALEGRE GOMES VARDERLEI\
+ANDRÉ FELIPE FURRIEL OLIVEIRA\
+PEDRO PAULO GOMES PAIVA
 
-## Introdução
+# ANÁLISE DA RELAÇÃO ENTRE A RENDA DOS PARTICIPANTES DO ENEM E SEU DESEMPENHO
+
+## INTRODUÇÃO
 
 Em 2022, no Brasil, os 20% da população com maiores rendimentos tinham um rendimento cerca de 11 vezes superior ao dos 20% da população com menores rendimentos e, dentre os países selecionados para esta comparação, o país ocupava a segunda maior desigualdade de rendimento (IBGE, 2025, p. 58). Nesse contexto, o Exame Nacional do Ensino Médio (ENEM), uma prova do Governo Federal do Brasil, mensura o desempenho individual dos participantes de diferentes realidades socioeconômicas, gerando os indicadores educacionais do país. Assim, esta análise busca investigar a relação entre a renda e o desempenho dos participantes no ENEM.
 
-## Objetivo
+## OBJETIVO
 
-Nesta análise, utilizaremos os microdados do ENEM disponibilizados anualmente pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) com o objetivo de entender qual é a relação entre a renda do participante e seu desempenho no ENEM e como a diferença de renda dos participantes impacta suas notas.
+Nesta análise, utilizaremos os microdados do ENEM disponibilizados anualmente pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (INEP) com o objetivo de entender qual é a relação entre a renda do aluno e seu desempenho no ENEM e como a diferença de renda entre participantes impacta seu rendimento no exame.
 
-## Material e Método
+## MATERIAL E MÉTODO
 
-Para tal, selecionamos os microdados do ENEM entre os anos de 2020 e 2024. Os dados de 2024 estão divididos em duas tabelas, as quais agrupamos por regiões, estados ou cidades e por ano, obtendo médias de renda e de notas pelos respectivos agrupamentos. Por outro lado, os dados de 2020 a 2023 estão em uma mesma tabela e obtemos diretamente as médias de renda e notas.
+Para esta análise, selecionamos os microdados do ENEM entre os anos de 2020 e 2024. Os dados de 2024 estão divididos em duas tabelas, as quais agrupamos por regiões, estados ou cidades e por ano, obtendo médias de renda e de notas pelos respectivos agrupamentos. Por outro lado, os dados de 2020 a 2023 estão em uma mesma tabela, permitindo obter diretamente as médias de renda e notas de cada participante.
 
-Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. Como explicitado na Figura **1**, o valor do salário mínimo difere ao longo do tempo; por esse motivo, todas as rendas foram expressas em salários mínimos para garantir a comparabilidade dos valores.
+Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. Como explicitado na **Figura 1**, o valor do salário mínimo difere ao longo do tempo; por esse motivo, todas as rendas foram expressas em salários mínimos para garantir a comparabilidade dos valores.
 
 Como o questionário apresenta a renda em faixas, adotamos o ponto médio de cada intervalo como valor representativo da renda mensal familiar. No caso da faixa aberta "Acima de 20 salários mínimos", convencionamos o valor de 22,5 salários mínimos. Em seguida, a renda mensal familiar foi dividida pelo número de membros da família, resultando na renda mensal per capita, utilizada em todas as análises relacionadas à renda.
 
 A Tabela a seguir apresenta os intervalos de renda do questionário socioeconômico e os respectivos valores adotados neste estudo.
 
 | Intervalo de renda familiar (salários mínimos) | Valor adotado (salários mínimos) |
-|------------------------------------------|------------------------------|
+|------------------------------------|------------------------------------|
 | Sem renda | 0,0 |
 | Até 1 | 0,5 |
 | De 1 a 1,5 | 1,25 |
@@ -46,40 +50,72 @@ A Tabela a seguir apresenta os intervalos de renda do questionário socioeconôm
 
 <!-- TODO: Explicar municípios selecionados e outras coisas necessárias -->
 
-## Resultados
+## RESULTADOS
 
-A Figura **1** apresenta a evolução da renda per capita média dos participantes do ENEM entre 2020 e 2024, segundo as regiões do Brasil. Observa-se a persistência de diferenças regionais ao longo do período analisado, com regiões historicamente mais desenvolvidas apresentando níveis médios de renda per capita superiores às demais. Apesar de variações ao longo do tempo, o padrão relativo entre regiões permanece estável.
+### ANÁLISE REGIONAL
+
+A **Figura 1** apresenta a evolução da renda per capita média dos participantes do ENEM entre 2020 e 2024, segundo as regiões do Brasil. Observa-se a persistência de diferenças regionais ao longo do período analisado, com regiões historicamente mais desenvolvidas apresentando níveis médios de renda per capita superiores às demais. Apesar de variações ao longo do tempo, o padrão relativo entre regiões permanece estável.
 
 **Figura 1 – Evolução da renda per capita média dos participantes do ENEM, por região (2020–2024)**
 
 ![](plots/regions/renda_tempo.png)
 
-A Figura **2** mostra a evolução das notas médias do ENEM no mesmo período. De forma semelhante ao observado para a renda, as notas médias também apresentam diferenças regionais consistentes ao longo do tempo, ainda que com menor amplitude relativa.
+A **Figura 2** mostra a evolução das notas médias do ENEM no mesmo período. De forma semelhante ao observado para a renda, as notas médias também apresentam diferenças regionais consistentes ao longo do tempo, ainda que com menor amplitude relativa.
 
 **Figura 2 – Evolução das notas médias do ENEM, por região (2020–2024)**
 
 ![](plots/regions/notas_tempo.png)
 
-A relação direta entre renda per capita média e desempenho no ENEM é explorada na Figura **3**, que apresenta a dispersão entre essas duas variáveis para cada disciplina. Em todas elas, observa-se uma associação positiva, indicando que regiões com maior renda per capita média tendem a apresentar notas médias mais elevadas. No entanto, a intensidade dessa relação varia entre as áreas de conhecimento, com maior dispersão observada em algumas disciplinas.
+A relação direta entre renda per capita média e desempenho no ENEM é explorada na **Figura 3**, que apresenta a dispersão entre essas duas variáveis para cada disciplina. Em todas elas, observa-se uma associação positiva, indicando que regiões com maior renda per capita média tendem a apresentar notas médias mais elevadas. No entanto, a intensidade dessa relação varia entre as áreas de conhecimento, com maior dispersão observada em algumas disciplinas.
 
 **Figura 3 – Relação entre renda per capita média dos participantes e notas médias do ENEM, por disciplina e por região**
 
 ![](plots/regions/scatter_renda_notas.png)
 
-Por fim, a Figura **4** apresenta os coeficientes de correlação entre renda per capita média e notas médias do ENEM, estimados por disciplina e por ano, além do período agregado. Os resultados indicam correlações positivas e relativamente estáveis ao longo do tempo, com valores mais elevados observados, em geral, para Matemática, Ciências Humanas e Ciências da Natureza, reforçando a associação observada nos gráficos de dispersão.
+Por fim, a **Figura 4** apresenta os coeficientes de correlação entre renda per capita média e notas médias do ENEM, estimados por disciplina e por ano, além do período agregado. Os resultados indicam correlações positivas e relativamente estáveis ao longo do tempo, com valores mais elevados observados, em geral, para Matemática, Ciências Humanas e Ciências da Natureza, reforçando a associação observada nos gráficos de dispersão.
 
 **Figura 4 – Correlação entre renda per capita média e notas médias do ENEM, por disciplina e ano**
 
 ![](plots/regions/correlacao_por_ano.png)
 
-## Discussão
+### ANÁLISE ESTADUAL
+
+Ao analisar os dados obtidos através de um processo de inferência ecológia à escala estadual, podemos averiguar os resultados obtidos anteriormente na análise regional e trazer inferências mais precisas sobre o comportamento da distribuição de notas em relação com a renda média dos participantes em determinadas localidades.
+
+Na **Figura 5** é analisada a renda média em salários mínimios por unidade federativa segundo os dados do ENEM 2024. O mapa explicíta uma alta concentração de renda nas regiões mais ao sul do país, enquanto apresenta que na maioria dos estados das regiões Norte e Nordeste a renda média dos participantes está na faixa de meio salário mínimo.
+
+**Figura 5 - Renda média por unidade federativa dos particpantes do ENEM 2024**
+
+![](plots/States/2024/Mapa_Renda_Estados_2024.png)
+
+Realizando a mesma análise, porém, agora observando as notas médias por participante segundo os microdados do ENEM 2024 (média simples) obtemos os dados representados na **Figura 6**. Comparando com o mapa da **Figura 5**, é possível estabelecer uma inferência entre os dados. O mapa apresenta uma média simples maior nas unidades federativas das regiões mais ao sul do país.
+
+**Figura 6 - Nota média por unidade federativa dos participantes do ENEM 2024**
+
+![](plots/States/2024/Mapa_Nota_Estados_2024.png)
+
+A **Figura 7** por sua vez estabelece uma relação entre os dados de renda e nota através da razão entre os resultados obtidos por cada unidade federativa. Sejam $M_m$ a média simples das notas mínimas obtidas em cada uma das áreas, ela representa de forma simbólica a menor nota que um participante pode tirar (salvo em casos de eliminação ou não realização do exame), $N_m$ a nota média por UF e $R_m$ a renda média por UF. A razão foi calculada como $\frac{N_m-M_m}{R_m}$ a fim de normalizar os valores das notas que são distribuidas segundo a Teoria de Resposta ao Item (TRI).
+
+**Figura 7 - Razão entre nota média e renda média dos participantes do ENEM 2024**
+
+![](plots/States/2024/Mapa_Nota_Div_Renda_Estados_2024.png)
+
+A **Figura 7** Propõe inicialmeente duas formas de interpretação dos dados não necessariamente excludentes. A primeira é que os estados com desempenho conciderado inferior no exame também apresentam uma "maior rendimento no exame em função da renda". Na teoria isso poderia indicar que caso houvesse uma distribuição mais igualitária de renda no país (considerando a renda como um fator significativo no atuação no exame), poderíamos observar uma homogeinização dos dados de notas ou uma inversão dos resultados obtidos atualmente. A segunda maneira de interpretar essa relação é inferir que apesar da alta desigualdade de renda entre os estudantes de diferentes localidades do país, a diferença entre as notas médias não são tão significativas. Isso poderia indicar que apesar de haver uma relação entre essas variáveis, existem outros fatores que influenciam significativamente nos resultados dos participantes.
+
+É importante ressaltar que estas observações se monstraram constantes em todas as edições analisadas (2020 - 2024). Isso demonstra que tais relações são resultados de processos estruturais que atuam em grandes escalas de tempo. Ao contrário de um impacto pontual ou causado por alguma interferência externa em determinado período de tempo, como é o caso do estado do Rio Grande do Sul que apesar de apresentar um crescimento significativo nos resultados do exame entre os anos de 2020 e 2023, na edição de 2024 apresentou uma queda para um desempenho próximo ao que havia obtido na edição de 2021, oque provavelmente tem fortes relações com a crise climática enfrentada pelo estado no ano respectivo.
+
+### ANÁLISE MUNICIPAL
+
+## DISCUSSÃO
 
 <!-- TODO: Por que as diferenças existem? Limitações e implicações -->
 
-## Conclusão e Observações
+## CONCLUSÃO E OBSERVAÇÕES
 
-## Agradecimentos
+## AGRADECIMENTOS
 
-## Referências
+## REFERÊNCIAS
 
-\[1\] IBGE. Síntese de indicadores sociais: uma análise das condições de vida da população brasileira: 2025. Rio de Janeiro: IBGE, 2025. Disponível em: <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102240.pdf>.
+\[1\] INEP. Microdados ENEM. Disponível em: <https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem>
+
+\[2\] IBGE. Síntese de indicadores sociais: uma análise das condições de vida da população brasileira: 2025. Rio de Janeiro: IBGE, 2025. Disponível em: <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102240.pdf>.
