@@ -22,7 +22,7 @@ Nesta análise, utilizaremos os microdados do ENEM disponibilizados anualmente p
 
 Para esta análise, selecionamos os microdados do ENEM entre os anos de 2020 e 2024. Os dados de 2024 estão divididos em duas tabelas, as quais agrupamos por regiões, estados ou cidades e por ano, obtendo médias de renda e de notas pelos respectivos agrupamentos. Por outro lado, os dados de 2020 a 2023 estão em uma mesma tabela, permitindo obter diretamente as médias de renda e notas de cada participante.
 
-Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. Como explicitado na **Figura 1**, o valor do salário mínimo difere ao longo do tempo; por esse motivo, todas as rendas foram expressas em salários mínimos para garantir a comparabilidade dos valores.
+Para estimar as médias de renda, utilizamos as informações do questionário socioeconômico do ENEM, especificamente a renda mensal familiar e o número de membros da família do participante. Como o valor do salário mínimo difere ao longo do tempo, todas as rendas foram expressas em salários mínimos para garantir a comparabilidade dos valores.
 
 Como o questionário apresenta a renda em faixas, adotamos o ponto médio de cada intervalo como valor representativo da renda mensal familiar. No caso da faixa aberta "Acima de 20 salários mínimos", convencionamos o valor de 22,5 salários mínimos. Em seguida, a renda mensal familiar foi dividida pelo número de membros da família, resultando na renda mensal per capita, utilizada em todas as análises relacionadas à renda.
 
@@ -82,13 +82,13 @@ Por fim, a **Figura 4** apresenta os coeficientes de correlação entre renda pe
 
 Ao analisar os dados obtidos através de um processo de inferência ecológia à escala estadual, podemos averiguar os resultados obtidos anteriormente na análise regional e trazer inferências mais precisas sobre o comportamento da distribuição de notas em relação com a renda média dos participantes em determinadas localidades.
 
-Na **Figura 5** é analisada a renda média em salários mínimios por unidade federativa segundo os dados do ENEM 2024. O mapa explicíta uma alta concentração de renda nas regiões mais ao sul do país, enquanto apresenta que na maioria dos estados das regiões Norte e Nordeste a renda média dos participantes está na faixa de meio salário mínimo.
+Na **Figura 5**, analisa-se a renda média em salários mínimos por unidade federativa segundo os dados do ENEM 2024. O mapa explicíta uma alta concentração de renda nas regiões mais ao sul do país, enquanto apresenta que na maioria dos estados das regiões Norte e Nordeste a renda média dos participantes está na faixa de meio salário mínimo.
 
 **Figura 5 - Renda média por unidade federativa dos particpantes do ENEM 2024**
 
 ![](plots/States/2024/Mapa_Renda_Estados_2024.png)
 
-Realizando a mesma análise, porém, agora observando as notas médias por participante segundo os microdados do ENEM 2024 (média simples) obtemos os dados representados na **Figura 6**. Comparando com o mapa da **Figura 5**, é possível estabelecer uma inferência entre os dados. O mapa apresenta uma média simples maior nas unidades federativas das regiões mais ao sul do país.
+Realizando a mesma análise, porém, agora observando as notas médias por participante, segundo os microdados do ENEM 2024 (média simples), obtemos os dados representados na **Figura 6**. Comparando com o mapa da **Figura 5**, é possível estabelecer uma inferência entre os dados. O mapa apresenta uma média simples maior nas unidades federativas das regiões mais ao sul do país.
 
 **Figura 6 - Nota média por unidade federativa dos participantes do ENEM 2024**
 
@@ -100,9 +100,9 @@ A **Figura 7** por sua vez estabelece uma relação entre os dados de renda e no
 
 ![](plots/States/2024/Mapa_Nota_Div_Renda_Estados_2024.png)
 
-A **Figura 7** Propõe inicialmeente duas formas de interpretação dos dados não necessariamente excludentes. A primeira é que os estados com desempenho conciderado inferior no exame também apresentam uma "maior rendimento no exame em função da renda". Na teoria isso poderia indicar que caso houvesse uma distribuição mais igualitária de renda no país (considerando a renda como um fator significativo no atuação no exame), poderíamos observar uma homogeinização dos dados de notas ou uma inversão dos resultados obtidos atualmente. A segunda maneira de interpretar essa relação é inferir que apesar da alta desigualdade de renda entre os estudantes de diferentes localidades do país, a diferença entre as notas médias não são tão significativas. Isso poderia indicar que apesar de haver uma relação entre essas variáveis, existem outros fatores que influenciam significativamente nos resultados dos participantes.
+A **Figura 7** Propõe inicialmente duas formas de interpretação dos dados não necessariamente excludentes. A primeira é que os estados com desempenho considerado inferior no exame também apresentam uma "maior rendimento no exame em função da renda". Na teoria, isso poderia indicar que, caso houvesse uma distribuição mais igualitária de renda no país (considerando a renda como um fator significativo na atuação no exame), poderíamos observar uma homogeneização dos dados de notas ou uma inversão dos resultados obtidos atualmente. A segunda maneira de interpretar essa relação é inferir que, apesar da alta desigualdade de renda entre os estudantes de diferentes localidades do país, a diferença entre as notas médias não são tão significativas. Isso poderia indicar que, apesar de haver uma relação entre essas variáveis, existem outros fatores que influenciam significativamente nos resultados dos participantes.
 
-É importante ressaltar que estas observações se monstraram constantes em todas as edições analisadas (2020 - 2024). Isso demonstra que tais relações são resultados de processos estruturais que atuam em grandes escalas de tempo. Ao contrário de um impacto pontual ou causado por alguma interferência externa em determinado período de tempo, como é o caso do estado do Rio Grande do Sul que apesar de apresentar um crescimento significativo nos resultados do exame entre os anos de 2020 e 2023, na edição de 2024 apresentou uma queda para um desempenho próximo ao que havia obtido na edição de 2021, oque provavelmente tem fortes relações com a crise climática enfrentada pelo estado no ano respectivo.
+É importante ressaltar que estas observações se monstraram constantes em todas as edições analisadas (2020 - 2024). Isso demonstra que tais relações são resultados de processos estruturais que atuam em grandes escalas de tempo. Ao contrário de um impacto pontual ou causado por alguma interferência externa em determinado período de tempo, como é o caso do estado do Rio Grande do Sul que apesar de apresentar um crescimento significativo nos resultados do exame entre os anos de 2020 e 2023, na edição de 2024 apresentou uma queda para um desempenho próximo ao que havia obtido na edição de 2021, o que pode se relacionar com a crise climática enfrentada pelo estado no ano respectivo.
 
 ### ANÁLISE MUNICIPAL
 
@@ -116,6 +116,6 @@ A **Figura 7** Propõe inicialmeente duas formas de interpretação dos dados n�
 
 ## REFERÊNCIAS
 
-\[1\] INEP. Microdados ENEM. Disponível em: <https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem>
+\[1\] IBGE. Síntese de indicadores sociais: uma análise das condições de vida da população brasileira: 2025. Rio de Janeiro: IBGE, 2025. Disponível em: <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102240.pdf>.
 
-\[2\] IBGE. Síntese de indicadores sociais: uma análise das condições de vida da população brasileira: 2025. Rio de Janeiro: IBGE, 2025. Disponível em: <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102240.pdf>.
+\[2\] INEP. Microdados ENEM. Disponível em: <https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem>
