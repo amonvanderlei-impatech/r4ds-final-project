@@ -3,28 +3,6 @@ library(tidyverse)
 library(ggrepel)
 library(geobr)
 
-# Income auxiliar table
-pontos_medios <- tribble(
-  ~Q007, ~ponto_medio,
-  "A", 0,
-  "B", 0.5,
-  "C", 1.25,
-  "D", 1.75,
-  "E", 2.25,
-  "F", 2.75,
-  "G", 3.5,
-  "H", 4.5,
-  "I", 5.5,
-  "J", 6.5,
-  "K", 7.5,
-  "L", 8.5,
-  "M", 9.5,
-  "N", 11,
-  "O", 13.5,
-  "P", 17.5,
-  "Q", 22.5,
-)
-
 # Data
 resultado20 <- read_csv2("data/municipalities/municipios_2020.csv")
 resultado21 <- read_csv2("data/municipalities/municipios_2021.csv")
