@@ -48,13 +48,15 @@ A Tabela a seguir apresenta os intervalos de renda do questionário socioeconôm
 | De 15 a 20 | 17,5 |
 | Acima de 20 | 22,5 |
 
+\clearpage
+
 Para a análise dos municípios selecionamos seis municípios, o município com a maior renda média em 2024 (Vinhedo/SP), o município com a menor nota média em 2024 (Japurá/AM), e quatro municípios relevantes para os autores (Maceió/AL, Vitória/ES, Assaré/CE e Rio de Janeiro/RJ). Outro fato relevante para a análise é que nem todos os municípios do país aplicam o exame, a **Figura 1** apresenta os municípios com polos de aplicação e as respectivas mudanças ocorridas nos polos.
 
 **Figura 1 – Municípios com polos de aplicação**
 
 ![](plots/municipalities/polos.png)
 
-<!-- TODO: Explicar municípios selecionados e outras coisas necessárias -->
+\clearpage
 
 ## RESULTADOS
 
@@ -66,11 +68,15 @@ A **Figura 2** apresenta a evolução da renda per capita média dos participant
 
 ![](plots/regions/renda_tempo.png)
 
+\clearpage
+
 A **Figura 3** mostra a evolução das notas médias do ENEM no mesmo período. De forma semelhante ao observado para a renda, as notas médias também apresentam diferenças regionais consistentes ao longo do tempo, ainda que com menor amplitude relativa.
 
 **Figura 3 – Evolução das notas médias do ENEM, por região (2020–2024)**
 
 ![](plots/regions/notas_tempo.png)
+
+\clearpage
 
 A relação direta entre renda per capita média e desempenho no ENEM é explorada na **Figura 4**, que apresenta a dispersão entre essas duas variáveis para cada disciplina. Em todas elas, observa-se uma associação positiva, indicando que regiões com maior renda per capita média tendem a apresentar notas médias mais elevadas. No entanto, a intensidade dessa relação varia entre as áreas de conhecimento, com maior dispersão observada em algumas disciplinas.
 
@@ -78,11 +84,15 @@ A relação direta entre renda per capita média e desempenho no ENEM é explora
 
 ![](plots/regions/scatter_renda_notas.png)
 
+\clearpage
+
 Por fim, a **Figura 5** apresenta os coeficientes de correlação entre renda per capita média e notas médias do ENEM, estimados por disciplina e por ano, além do período agregado. Os resultados indicam correlações positivas e relativamente estáveis ao longo do tempo, com valores mais elevados observados, em geral, para Matemática, Ciências Humanas e Ciências da Natureza, reforçando a associação observada nos gráficos de dispersão.
 
 **Figura 5 – Correlação entre renda per capita média e notas médias do ENEM, por disciplina e ano**
 
 ![](plots/regions/correlacao_por_ano.png)
+
+\clearpage
 
 ### ANÁLISE ESTADUAL
 
@@ -94,6 +104,8 @@ Na **Figura 6**, analisa-se a renda média em salários mínimos por unidade fed
 
 ![](plots/States/2024/Mapa_Renda_Estados_2024.png)
 
+\clearpage
+
 Realizando a mesma análise, porém, agora observando as notas médias por participante, segundo os microdados do ENEM 2024 (média simples), obtemos os dados representados na **Figura 7**. Comparando com o mapa da **Figura 6**, é possível estabelecer uma inferência entre os dados. O mapa apresenta uma média simples maior nas unidades federativas das regiões mais ao sul do país.
 
 **Figura 7 - Nota média por unidade federativa dos participantes do ENEM 2024**
@@ -101,6 +113,8 @@ Realizando a mesma análise, porém, agora observando as notas médias por parti
 ![](plots/States/2024/Mapa_Nota_Estados_2024.png)
 
 A **Figura 8** por sua vez estabelece uma relação entre os dados de renda e nota através da razão entre os resultados obtidos por cada unidade federativa. Sejam $M_m$ a média simples das notas mínimas obtidas em cada uma das áreas, ela representa de forma simbólica a menor nota que um participante pode tirar (salvo em casos de eliminação ou não realização do exame), $N_m$ a nota média por UF e $R_m$ a renda média por UF. A razão foi calculada como $\frac{N_m-M_m}{R_m}$ a fim de normalizar os valores das notas que são distribuidas segundo a Teoria de Resposta ao Item (TRI).
+
+\clearpage
 
 **Figura 8 - Razão entre nota média e renda média dos participantes do ENEM 2024**
 
@@ -116,59 +130,77 @@ As **Figuras 9 - 13** apresentam gráficos de pontos que representam municípios
 
 **Figura 9 - Médias de nota e renda por município do ENEM 2020**
 
-![](plots/municipalities/medias20.png)
+![](plots/municipalities/medias20.png){width="90%" fig-align="center"}
+
+\clearpage
 
 **Figura 10 - Médias de nota e renda por município do ENEM 2021**
 
-![](plots/municipalities/medias21.png)
+![](plots/municipalities/medias21.png){width="90%" fig-align="center"}
 
 **Figura 11 - Médias de nota e renda por município do ENEM 2022**
 
-![](plots/municipalities/medias22.png)
+![](plots/municipalities/medias22.png){width="90%" fig-align="center"}
 
 **Figura 12 - Médias de nota e renda por município do ENEM 2023**
 
-![](plots/municipalities/medias23.png)
+![](plots/municipalities/medias23.png){width="90%" fig-align="center"}
 
 **Figura 13 - Médias de nota e renda por município do ENEM 2024**
 
-![](plots/municipalities/medias24.png)
+![](plots/municipalities/medias24.png){width="90%" fig-align="center"}
 
 A **Figura 14** apresenta um gráfico de pontos que representa a evolução temporal dos municípios selecionados. Observa-se que 2020 foi um ano atípico, caracterizado por uma queda acentuada da renda média, principalmente dos municipios mais ricos, o que também foi acompanhada por uma queda proporcional na nota média, evidenciando que nos municipios mais ricos essa relação é mais forte, já que nos municipios mais pobres a nota média varia mais anualmente.
 
 **Figura 14 - Série temporal de médias de renda e notas de municípios selecionados**
 
-![](plots/municipalities/medias_temporais.png)
+![](plots/municipalities/medias_temporais.png){width="90%" fig-align="center"}
 
 As **Figuras 15 - 19** apresentam mapas que representam as razões entre as rendas e notas médias dos municípios que aplicam o exame, assim como calculado para os estados, em cada um dos anos de 2020 - 2024. Assim como na análise estadual, os municípios mais pobres apresentam razões maiores e os dados se mostram constantes.
 
+\clearpage
+
 **Figura 15 - Razão entre nota e renda do município do ENEM 2020**
 
-![](plots/municipalities/razao20.png)
+![](plots/municipalities/razao20.png){width="90%" fig-align="center"}
 
 **Figura 16 - Razão entre nota e renda do município do ENEM 2021**
 
-![](plots/municipalities/razao21.png)
+![](plots/municipalities/razao21.png){width="90%" fig-align="center"}
 
 **Figura 17 - Razão entre nota e renda do município do ENEM 2022**
 
-![](plots/municipalities/razao22.png)
+![](plots/municipalities/razao22.png){width="90%" fig-align="center"}
 
 **Figura 18 - Razão entre nota e renda do município do ENEM 2023**
 
-![](plots/municipalities/razao23.png)
+![](plots/municipalities/razao23.png){width="90%" fig-align="center"}
 
 **Figura 19 - Razão entre nota e renda do município do ENEM 2024**
 
-![](plots/municipalities/razao24.png)
+![](plots/municipalities/razao24.png){width="90%" fig-align="center"}
 
 ## DISCUSSÃO
 
-<!-- TODO: Por que as diferenças existem? Limitações e implicações -->
+<!-- TODO: Por que as diferenças existem (Estadual e Municipal)-->
+
+Os resultados da análise regional evidenciam uma associação consistente e persistente entre a renda per capita média e o desempenho no ENEM ao longo do período analisado. As diferenças regionais de renda, com Sul e Sudeste acima e Norte e Nordeste abaixo, mantêm-se relativamente estáveis, refletindo desigualdades socioeconômicas estruturais amplamente documentadas.
+
+Paralelamente, as notas médias do ENEM apresentam padrões regionais semelhantes, ainda que com menor amplitude relativa, sugerindo que o desempenho educacional tende a reproduzir, ao menos parcialmente, as desigualdades econômicas existentes. A associação positiva entre renda e desempenho se manifesta em todas as áreas do conhecimento, conforme evidenciado pelos gráficos de dispersão e pelos coeficientes de correlação estimados.
+
+A estabilidade temporal das correlações sugere que a relação entre renda e desempenho no ENEM apresenta caráter estrutural. Isso reforça a necessidade de considerar as desigualdades sociais e regionais do país ao interpretar os resultados do exame, bem como de considerar políticas educacionais que mitiguem os efeitos dessas desigualdades sobre o desempenho dos participantes.
 
 ## CONCLUSÃO E OBSERVAÇÕES
 
+<!-- TODO: Parágrafo(s) de conclusão -->
+
+<!-- TODO: Limitações e implicações -->
+
+Apesar de permitir a identificação de padrões gerais, a análise tem como base a inferência ecológica, utilizando médias agregadas, o que impede interpretações no nível individual. A renda per capita média não representa necessariamente a renda dos participantes e pode ocultar desigualdades internas. Além disso, não foram controladas outras variáveis relevantes para o desempenho no ENEM, como a escolaridade dos pais, o tipo de escola frequentada e o acesso a políticas públicas educacionais, limitando a atribuição d a associação observada exclusivamente à renda.
+
 ## AGRADECIMENTOS
+
+Agradecemos ao professor Dr. Leonardo Bastos pela orientação ao longo do desenvolvimento deste trabalho, realizado no âmbito do Programa de Iniciação Científica e Mestrado (PICME) na IMPA Tech, no curso *R para Ciência de Dados*. Sua orientação contribuiu significativamente para o aprendizado, sendo fundamental para a definição das estratégias metodológicas e a interpretação dos resultados.
 
 ## REFERÊNCIAS
 
