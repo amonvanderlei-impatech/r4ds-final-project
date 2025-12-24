@@ -98,7 +98,7 @@ ggsave("plots/municipalities/medias20.png")
 ggplot(data = highlight, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA, color = ANO)) +
   geom_point()+ theme_bw() +
   scale_color_viridis_c(option = "plasma", direction = -1) +
-  geom_text_repel(data = highlight22, aes(label = Nome_Município), color = "grey50") +
+  geom_text_repel(data = highlight23, aes(label = Nome_Município), color = "grey50") +
   labs(title = "Série temporal de médias de renda e notas de municípios selecionados",
        x = "Renda média (Salários mínimos)",
        y = "Nota média (Média aritmética)")
