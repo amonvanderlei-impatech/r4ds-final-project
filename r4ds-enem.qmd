@@ -98,87 +98,133 @@ Por fim, a **Figura 5** apresenta os coeficientes de correlação entre renda pe
 
 Ao analisar os dados obtidos através de um processo de inferência ecológica à escala estadual, podemos averiguar os resultados obtidos anteriormente na análise regional e trazer inferências mais precisas sobre o comportamento da distribuição de notas em relação com a renda média dos participantes em determinadas localidades.
 
-Na **Figura 6**, analisa-se a renda média em salários mínimos por unidade federativa segundo os dados do ENEM 2024. O mapa explicíta uma alta concentração de renda nas regiões mais ao sul do país, enquanto apresenta que na maioria dos estados das regiões Norte e Nordeste a renda média dos participantes está na faixa de meio salário mínimo.
+Nas **Figuras 6 - 10**, analisa-se a renda média em salários mínimos por unidade federativa segundo os dados das edições do ENEM 2020 - 2024. Os mapas explicítam uma alta concentração de renda nas regiões mais ao sul do país, enquanto apresenta que na maioria dos estados das regiões Norte e Nordeste a renda média dos participantes está na faixa de meio salário mínimo.
 
-**Figura 6 - Renda média por unidade federativa dos particpantes do ENEM 2024**
+**Figura 6 - Renda média por unidade federativa dos particpantes do ENEM 2020**
+
+![](plots/States/2020/Mapa_Renda_Estados_2020.png)
+
+**Figura 7 - Renda média por unidade federativa dos particpantes do ENEM 2021**
+
+![](plots/States/2021/Mapa_Renda_Estados_2021.png)
+
+**Figura 8 - Renda média por unidade federativa dos particpantes do ENEM 2022**
+
+![](plots/States/2022/Mapa_Renda_Estados_2022.png)
+
+**Figura 9 - Renda média por unidade federativa dos particpantes do ENEM 2023**
+
+![](plots/States/2023/Mapa_Renda_Estados_2023.png)
+
+**Figura 10 - Renda média por unidade federativa dos particpantes do ENEM 2024**
 
 ![](plots/States/2024/Mapa_Renda_Estados_2024.png)
 
 \clearpage
 
-Realizando a mesma análise, porém, agora observando as notas médias por participante, segundo os microdados do ENEM 2024 (média simples), obtemos os dados representados na **Figura 7**. Comparando com o mapa da **Figura 6**, é possível estabelecer uma inferência entre os dados. O mapa apresenta uma média simples maior nas unidades federativas das regiões mais ao sul do país.
+Realizando a mesma análise, porém, agora observando as notas médias por participante, segundo os microdados das edições do ENEM 2020 - 2024 (média simples), obtemos os dados representados nas **Figuras 11 - 15**. Comparando com os mapas das **Figura 6 - 10**, é possível estabelecer uma inferência entre os dados. O mapa apresenta uma média simples maior nas unidades federativas das regiões mais ao sul do país.
 
-**Figura 7 - Nota média por unidade federativa dos participantes do ENEM 2024**
+**Figura 11 - Nota média por unidade federativa dos participantes do ENEM 2020**
+
+![](plots/States/2020/Mapa_Nota_Estados_2020.png)
+
+**Figura 12 - Nota média por unidade federativa dos participantes do ENEM 2021**
+
+![](plots/States/2021/Mapa_Nota_Estados_2021.png)
+
+**Figura 13 - Nota média por unidade federativa dos participantes do ENEM 2022**
+
+![](plots/States/2022/Mapa_Nota_Estados_2022.png)
+
+**Figura 14 - Nota média por unidade federativa dos participantes do ENEM 2023**
+
+![](plots/States/2023/Mapa_Nota_Estados_2023.png)
+
+**Figura 15 - Nota média por unidade federativa dos participantes do ENEM 2024**
 
 ![](plots/States/2024/Mapa_Nota_Estados_2024.png)
 
-A **Figura 8** por sua vez estabelece uma relação entre os dados de renda e nota através da razão entre os resultados obtidos por cada unidade federativa. Sejam $M_m$ a média simples das notas mínimas obtidas em cada uma das áreas, ela representa de forma simbólica a menor nota que um participante pode tirar (salvo em casos de eliminação ou não realização do exame), $N_m$ a nota média por UF e $R_m$ a renda média por UF. A razão foi calculada como $\frac{N_m-M_m}{R_m}$ a fim de normalizar os valores das notas que são distribuidas segundo a Teoria de Resposta ao Item (TRI).
+As **Figuras 16 - 20** por sua vez estabelecem uma relação entre os dados de renda e nota através da razão entre os resultados obtidos por cada unidade federativa. Sejam $M_m$ a média simples das notas mínimas obtidas em cada uma das áreas, ela representa de forma simbólica a menor nota que um participante pode tirar (salvo em casos de eliminação ou não realização do exame), $N_m$ a nota média por UF e $R_m$ a renda média por UF. A razão foi calculada como $\frac{N_m-M_m}{R_m}$ a fim de normalizar os valores das notas que são distribuidas segundo a Teoria de Resposta ao Item (TRI).
 
 \clearpage
 
-**Figura 8 - Razão entre nota média e renda média dos participantes do ENEM 2024**
+**Figura 16 - Razão entre nota média e renda média dos participantes do ENEM 2020**
+
+![](plots/States/2020/Mapa_Nota_Div_Renda_Estados_2020.png)
+
+**Figura 17 - Razão entre nota média e renda média dos participantes do ENEM 2020**
+
+![](plots/States/2021/Mapa_Nota_Div_Renda_Estados_2021.png)
+
+**Figura 18 - Razão entre nota média e renda média dos participantes do ENEM 2020**
+
+![](plots/States/2022/Mapa_Nota_Div_Renda_Estados_2022.png)
+
+**Figura 19 - Razão entre nota média e renda média dos participantes do ENEM 2020**
+
+![](plots/States/2023/Mapa_Nota_Div_Renda_Estados_2023.png)
+
+**Figura 20 - Razão entre nota média e renda média dos participantes do ENEM 2020**
 
 ![](plots/States/2024/Mapa_Nota_Div_Renda_Estados_2024.png)
 
-A **Figura 8** Propõe inicialmente duas formas de interpretação dos dados não necessariamente excludentes. A primeira é que os estados com desempenho considerado inferior no exame também apresentam uma "maior rendimento no exame em função da renda". Na teoria, isso poderia indicar que, caso houvesse uma distribuição mais igualitária de renda no país (considerando a renda como um fator significativo na atuação no exame), poderíamos observar uma homogeneização dos dados de notas ou uma inversão dos resultados obtidos atualmente. A segunda maneira de interpretar essa relação é inferir que, apesar da alta desigualdade de renda entre os estudantes de diferentes localidades do país, a diferença entre as notas médias não são tão significativas. Isso poderia indicar que, apesar de haver uma relação entre essas variáveis, existem outros fatores que influenciam significativamente nos resultados dos participantes.
-
-É importante ressaltar que estas observações se monstraram constantes em todas as edições analisadas (2020 - 2024). Isso demonstra que tais relações são resultados de processos estruturais que atuam em grandes escalas de tempo. Ao contrário de um impacto pontual ou causado por alguma interferência externa em determinado período de tempo, como é o caso do estado do Rio Grande do Sul que apesar de apresentar um crescimento significativo nos resultados do exame entre os anos de 2020 e 2023, na edição de 2024 apresentou uma queda para um desempenho próximo ao que havia obtido na edição de 2021, o que pode se relacionar com a crise climática enfrentada pelo estado no ano respectivo.
+\clearpage
 
 ### ANÁLISE MUNICIPAL
 
-As **Figuras 9 - 13** apresentam gráficos de pontos que representam municípios e suas respectivas rendas médias (eixo x) e notas médias (eixo y) em cada um dos anos de 2020 - 2024, com os municípios selecionados em destaque. Observa-se que municípios com maiores rendas médias tendem a também terem notas médias mais altas, representado no gráfico pela linha de tendência. Apesar da variação das notas com o passar dos anos, como as rendas médias não se alteram muito de um ano para o outro, podemos verificar que a forma do gráfico se mantém a mesma, evidenciando que essa relação não depende do ano de análise.
+As **Figuras 21 - 25** apresentam gráficos de pontos que representam municípios e suas respectivas rendas médias (eixo x) e notas médias (eixo y) em cada um dos anos de 2020 - 2024, com os municípios selecionados em destaque. Observa-se que municípios com maiores rendas médias tendem a também terem notas médias mais altas, representado no gráfico pela linha de tendência. Apesar da variação das notas com o passar dos anos, como as rendas médias não se alteram muito de um ano para o outro, podemos verificar que a forma do gráfico se mantém a mesma, evidenciando que essa relação não depende do ano de análise.
 
-**Figura 9 - Médias de nota e renda por município do ENEM 2020**
+**Figura 21 - Médias de nota e renda por município do ENEM 2020**
 
 ![](plots/municipalities/medias20.png){width="90%" fig-align="center"}
 
-\clearpage
-
-**Figura 10 - Médias de nota e renda por município do ENEM 2021**
+**Figura 22 - Médias de nota e renda por município do ENEM 2021**
 
 ![](plots/municipalities/medias21.png){width="90%" fig-align="center"}
 
-**Figura 11 - Médias de nota e renda por município do ENEM 2022**
+**Figura 23 - Médias de nota e renda por município do ENEM 2022**
 
 ![](plots/municipalities/medias22.png){width="90%" fig-align="center"}
 
-**Figura 12 - Médias de nota e renda por município do ENEM 2023**
+**Figura 24 - Médias de nota e renda por município do ENEM 2023**
 
 ![](plots/municipalities/medias23.png){width="90%" fig-align="center"}
 
-**Figura 13 - Médias de nota e renda por município do ENEM 2024**
+**Figura 25 - Médias de nota e renda por município do ENEM 2024**
 
 ![](plots/municipalities/medias24.png){width="90%" fig-align="center"}
 
-A **Figura 14** apresenta um gráfico de pontos que representa a evolução temporal dos municípios selecionados. Observa-se que 2020 foi um ano atípico, caracterizado por uma queda acentuada da renda média, principalmente dos municipios mais ricos, o que também foi acompanhada por uma queda proporcional na nota média, evidenciando que nos municipios mais ricos essa relação é mais forte, já que nos municipios mais pobres a nota média varia mais anualmente.
+A **Figura 26** apresenta um gráfico de pontos que representa a evolução temporal dos municípios selecionados. Observa-se que 2020 foi um ano atípico, caracterizado por uma queda acentuada da renda média, principalmente dos municipios mais ricos, o que também foi acompanhada por uma queda proporcional na nota média, evidenciando que nos municipios mais ricos essa relação é mais forte, já que nos municipios mais pobres a nota média varia mais anualmente.
 
-**Figura 14 - Série temporal de médias de renda e notas de municípios selecionados**
+**Figura 26 - Série temporal de médias de renda e notas de municípios selecionados**
 
 ![](plots/municipalities/medias_temporais.png){width="90%" fig-align="center"}
 
-As **Figuras 15 - 19** apresentam mapas que representam as razões entre as rendas e notas médias dos municípios que aplicam o exame, assim como calculado para os estados, em cada um dos anos de 2020 - 2024. Assim como na análise estadual, os municípios mais pobres apresentam razões maiores e os dados se mostram constantes.
+As **Figuras 27 - 31** apresentam mapas que representam as razões entre as rendas e notas médias dos municípios que aplicam o exame, assim como calculado para os estados, em cada um dos anos de 2020 - 2024. Assim como na análise estadual, os municípios mais pobres apresentam razões maiores e os dados se mostram constantes.
 
 \clearpage
 
-**Figura 15 - Razão entre nota e renda do município do ENEM 2020**
+**Figura 27 - Razão entre nota e renda do município do ENEM 2020**
 
 ![](plots/municipalities/razao20.png){width="90%" fig-align="center"}
 
-**Figura 16 - Razão entre nota e renda do município do ENEM 2021**
+**Figura 28 - Razão entre nota e renda do município do ENEM 2021**
 
 ![](plots/municipalities/razao21.png){width="90%" fig-align="center"}
 
-**Figura 17 - Razão entre nota e renda do município do ENEM 2022**
+**Figura 29 - Razão entre nota e renda do município do ENEM 2022**
 
 ![](plots/municipalities/razao22.png){width="90%" fig-align="center"}
 
-**Figura 18 - Razão entre nota e renda do município do ENEM 2023**
+**Figura 30 - Razão entre nota e renda do município do ENEM 2023**
 
 ![](plots/municipalities/razao23.png){width="90%" fig-align="center"}
 
-**Figura 19 - Razão entre nota e renda do município do ENEM 2024**
+**Figura 31 - Razão entre nota e renda do município do ENEM 2024**
 
 ![](plots/municipalities/razao24.png){width="90%" fig-align="center"}
+
+\clearpage
 
 ## DISCUSSÃO
 
@@ -189,6 +235,10 @@ Os resultados da análise regional evidenciam uma associação consistente e per
 Paralelamente, as notas médias do ENEM apresentam padrões regionais semelhantes, ainda que com menor amplitude relativa, sugerindo que o desempenho educacional tende a reproduzir, ao menos parcialmente, as desigualdades econômicas existentes. A associação positiva entre renda e desempenho se manifesta em todas as áreas do conhecimento, conforme evidenciado pelos gráficos de dispersão e pelos coeficientes de correlação estimados.
 
 A estabilidade temporal das correlações sugere que a relação entre renda e desempenho no ENEM apresenta caráter estrutural. Isso reforça a necessidade de considerar as desigualdades sociais e regionais do país ao interpretar os resultados do exame, bem como de considerar políticas educacionais que mitiguem os efeitos dessas desigualdades sobre o desempenho dos participantes.
+
+Através das analises estaduais, as **Figuras 16 - 20** propõem inicialmente duas formas de interpretação dos dados não necessariamente excludentes. A primeira é que os estados com desempenho considerado inferior no exame também apresentam uma "maior rendimento no exame em função da renda". Na teoria, isso poderia indicar que, caso houvesse uma distribuição mais igualitária de renda no país (considerando a renda como um fator significativo na atuação no exame), poderíamos observar uma homogeneização dos dados de notas ou uma inversão dos resultados obtidos atualmente. A segunda maneira de interpretar essa relação é inferir que, apesar da alta desigualdade de renda entre os estudantes de diferentes localidades do país, a diferença entre as notas médias não são tão significativas. Isso poderia indicar que, apesar de haver uma relação entre essas variáveis, existem outros fatores que influenciam significativamente nos resultados dos participantes.
+
+É importante ressaltar que estas observações se monstraram constantes em todas as edições analisadas (2020 - 2024). Isso demonstra que tais relações são resultados de processos estruturais que atuam em grandes escalas de tempo. Ao contrário de um impacto pontual ou causado por alguma interferência externa em determinado período de tempo, como é o caso do estado do Rio Grande do Sul que apesar de apresentar um crescimento significativo nos resultados do exame entre os anos de 2020 e 2023, na edição de 2024 apresentou uma queda para um desempenho próximo ao que havia obtido na edição de 2021, o que pode se relacionar com a crise climática enfrentada pelo estado no ano respectivo.
 
 ## CONCLUSÃO E OBSERVAÇÕES
 
