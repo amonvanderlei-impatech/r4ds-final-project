@@ -200,29 +200,13 @@ A **Figura 26** apresenta um gráfico de pontos que representa a evolução temp
 
 ![](plots/municipalities/medias_temporais.png){width="90%" fig-align="center"}
 
-As **Figuras 27 - 31** apresentam mapas que representam as razões entre as rendas e notas médias dos municípios que aplicam o exame, assim como calculado para os estados, em cada um dos anos de 2020 - 2024. Assim como na análise estadual, os municípios mais pobres apresentam razões maiores e os dados se mostram constantes.
+A **Figuras 27** apresenta mapas que representam as razões entre as rendas e notas médias dos municípios que aplicam o exame, assim como calculado para os estados, em cada um dos anos de 2020 - 2024. Assim como na análise estadual, os municípios mais pobres apresentam razões maiores e os dados se mostram constantes.
 
 \clearpage
 
-**Figura 27 - Razão entre nota e renda do município do ENEM 2020**
+**Figura 27 - Razão entre nota e renda do município por ano**
 
-![](plots/municipalities/razao20.png){width="90%" fig-align="center"}
-
-**Figura 28 - Razão entre nota e renda do município do ENEM 2021**
-
-![](plots/municipalities/razao21.png){width="90%" fig-align="center"}
-
-**Figura 29 - Razão entre nota e renda do município do ENEM 2022**
-
-![](plots/municipalities/razao22.png){width="90%" fig-align="center"}
-
-**Figura 30 - Razão entre nota e renda do município do ENEM 2023**
-
-![](plots/municipalities/razao23.png){width="90%" fig-align="center"}
-
-**Figura 31 - Razão entre nota e renda do município do ENEM 2024**
-
-![](plots/municipalities/razao24.png){width="90%" fig-align="center"}
+![](plots/municipalities/razao.png){width="90%" fig-align="center"}
 
 \clearpage
 

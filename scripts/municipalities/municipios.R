@@ -9,6 +9,7 @@ resultado21 <- read_csv2("data/municipalities/municipios_2021.csv")
 resultado22 <- read_csv2("data/municipalities/municipios_2022.csv")
 resultado23 <- read_csv2("data/municipalities/municipios_2023.csv")
 resultado24 <- read_csv2("data/municipalities/municipios_2024.csv")
+resultado <- bind_rows(resultado20, resultado21, resultado22, resultado23, resultado24)
 entrou21 <- resultado21 %>% anti_join(resultado20, by = "code_muni")
 entrou22 <- resultado22 %>% anti_join(resultado21, by = "code_muni")
 entrou23 <- resultado23 %>% anti_join(resultado22, by = "code_muni")
@@ -43,6 +44,8 @@ mapa21 <- municipios %>% left_join(resultado21)
 mapa22 <- municipios %>% left_join(resultado22)
 mapa23 <- municipios %>% left_join(resultado23)
 mapa24 <- municipios %>% left_join(resultado24)
+mapatotal <- bind_rows(mapa20, mapa21, mapa22, mapa23, mapa24)
+mapatotal$ANO <- factor(mapatotal$ANO, levels = 2020:2024)
 
 # Médias de nota e renda por município 2024
 ggplot(data = resultado24, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
@@ -51,7 +54,8 @@ ggplot(data = resultado24, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point(data = highlight24, color = "red") +
   labs(title = "Médias de nota e renda por município (2024)",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritmética)")
+       y = "Nota média (Média aritmética)",
+       caption = "Fonte: INEP - Microdados ENEM")
 ggsave("plots/municipalities/medias24.png")
 
 # Médias de nota e renda por município 2023
@@ -61,7 +65,8 @@ ggplot(data = resultado23, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point(data = highlight23, color = "red") +
   labs(title = "Médias de nota e renda por município (2023)",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritmética)")
+       y = "Nota média (Média aritmética)",
+       caption = "Fonte: INEP - Microdados ENEM")
 ggsave("plots/municipalities/medias23.png")
 
 # Médias de nota e renda por município 2022
@@ -71,7 +76,8 @@ ggplot(data = resultado22, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point(data = highlight22, color = "red") +
   labs(title = "Médias de nota e renda por município (2022)",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritmética)")
+       y = "Nota média (Média aritmética)",
+       caption = "Fonte: INEP - Microdados ENEM")
 ggsave("plots/municipalities/medias22.png")
 
 # Médias de nota e renda por município 2021
@@ -81,7 +87,8 @@ ggplot(data = resultado21, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point(data = highlight21, color = "red") +
   labs(title = "Médias de nota e renda por município (2021)",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritmética)")
+       y = "Nota média (Média aritmética)",
+       caption = "Fonte: INEP - Microdados ENEM")
 ggsave("plots/municipalities/medias21.png")
 
 # Médias de nota e renda por município 2020
@@ -91,7 +98,8 @@ ggplot(data = resultado20, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA)) +
   geom_point(data = highlight20, color = "red") +
   labs(title = "Médias de nota e renda por município (2020)",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritmética)")
+       y = "Nota média (Média aritmética)",
+       caption = "Fonte: INEP - Microdados ENEM")
 ggsave("plots/municipalities/medias20.png")
 
 #Série temporal de médias de renda e notas de municípios selecionados
@@ -101,7 +109,8 @@ ggplot(data = highlight, mapping = aes(x = RENDA_MEDIA, y = NOTA_MEDIA, color = 
   geom_text_repel(data = highlight23, aes(label = Nome_Município), color = "grey50") +
   labs(title = "Série temporal de médias de renda e notas de municípios selecionados",
        x = "Renda média (Salários mínimos)",
-       y = "Nota média (Média aritmética)")
+       y = "Nota média (Média aritmética)",
+       caption = "Fonte: INEP - Microdados ENEM")
 ggsave("plots/municipalities/medias_temporais.png")
 
 # municípios com polos de aplicação
@@ -119,7 +128,8 @@ ggplot(mapa) + theme_bw() +
     "estava em 2020" = "blue",
     "não tem polo" = "grey50")) +
   labs(title = "Municípios com polos de aplicação",
-       fill = "Situação") +
+       fill = "Situação",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/polos.png")
 
@@ -128,7 +138,8 @@ ggplot(mapa24) + theme_bw() +
   geom_sf(aes(fill = RENDA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Renda média dos alunos do município (2024)",
-       fill = "Renda média (salários mínimos)") +
+       fill = "Renda média (salários mínimos)",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/renda24.png")
 
@@ -137,7 +148,8 @@ ggplot(mapa23) + theme_bw() +
   geom_sf(aes(fill = RENDA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Renda média dos alunos do município (2023)",
-       fill = "Renda média (salários mínimos)") +
+       fill = "Renda média (salários mínimos)",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/renda23.png")
 
@@ -146,7 +158,8 @@ ggplot(mapa22) + theme_bw() +
   geom_sf(aes(fill = RENDA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Renda média dos alunos do município (2022)",
-       fill = "Renda média (salários mínimos)") +
+       fill = "Renda média (salários mínimos)",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/renda22.png")
 
@@ -155,7 +168,8 @@ ggplot(mapa21) + theme_bw() +
   geom_sf(aes(fill = RENDA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Renda média dos alunos do município (2021)",
-       fill = "Renda média (salários mínimos)") +
+       fill = "Renda média (salários mínimos)",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/renda21.png")
 
@@ -164,7 +178,8 @@ ggplot(mapa20) + theme_bw() +
   geom_sf(aes(fill = RENDA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Renda média dos alunos do município (2020)",
-       fill = "Renda média (salários mínimos)") +
+       fill = "Renda média (salários mínimos)",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/renda20.png")
 
@@ -173,7 +188,8 @@ ggplot(mapa24) + theme_bw() +
   geom_sf(aes(fill = NOTA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Nota média dos alunos do município (2024)",
-       fill = "Nota média") +
+       fill = "Nota média",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/nota24.png")
 
@@ -182,7 +198,8 @@ ggplot(mapa23) + theme_bw() +
   geom_sf(aes(fill = NOTA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Nota média dos alunos do município (2023)",
-       fill = "Nota média") +
+       fill = "Nota média",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/nota23.png")
 
@@ -191,7 +208,8 @@ ggplot(mapa22) + theme_bw() +
   geom_sf(aes(fill = NOTA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Nota média dos alunos do município (2022)",
-       fill = "Nota média") +
+       fill = "Nota média",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/nota22.png")
 
@@ -200,7 +218,8 @@ ggplot(mapa21) + theme_bw() +
   geom_sf(aes(fill = NOTA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Nota média dos alunos do município (2021)",
-       fill = "Nota média") +
+       fill = "Nota média",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/nota21.png")
 
@@ -209,16 +228,29 @@ ggplot(mapa20) + theme_bw() +
   geom_sf(aes(fill = NOTA_MEDIA), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Nota média dos alunos do município (2020)",
-       fill = "Nota média") +
+       fill = "Nota média",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/nota20.png")
+
+# Razão entre nota e renda por município
+ggplot(mapatotal) + theme_bw() +
+  geom_sf(aes(fill = RAZAO), color = NA) +
+  scale_fill_viridis_c(option = "plasma", direction = -1, na.value = "white") +
+  facet_wrap(~ ANO) +
+  labs(title = "Razão entre nota e renda do município por ano (2020 - 2024)",
+       fill = "Razão",
+       caption = "Fonte: INEP - Microdados ENEM") +
+  geom_sf(fill = NA, color = "black", data = estados)
+ggsave("plots/municipalities/razao.png")
 
 # Razão entre nota e renda por município (2024)
 ggplot(mapa24) + theme_bw() +
   geom_sf(aes(fill = RAZAO), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Razão entre nota e renda do município (2024)",
-       fill = "Razão") +
+       fill = "Razão",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/razao24.png")
 
@@ -227,7 +259,8 @@ ggplot(mapa23) + theme_bw() +
   geom_sf(aes(fill = RAZAO), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Razão entre nota e renda do município (2023)",
-       fill = "Razão") +
+       fill = "Razão",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/razao23.png")
 
@@ -236,7 +269,8 @@ ggplot(mapa22) + theme_bw() +
   geom_sf(aes(fill = RAZAO), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Razão entre nota e renda do município (2022)",
-       fill = "Razão") +
+       fill = "Razão",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/razao22.png")
 
@@ -245,7 +279,8 @@ ggplot(mapa21) + theme_bw() +
   geom_sf(aes(fill = RAZAO), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Razão entre nota e renda do município (2021)",
-       fill = "Razão") +
+       fill = "Razão",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/razao21.png")
 
@@ -254,6 +289,7 @@ ggplot(mapa20) + theme_bw() +
   geom_sf(aes(fill = RAZAO), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1) +
   labs(title = "Razão entre nota e renda do município (2020)",
-       fill = "Razão") +
+       fill = "Razão",
+       caption = "Fonte: INEP - Microdados ENEM") +
   geom_sf(fill = NA, color = "black", data = estados)
 ggsave("plots/municipalities/razao20.png")
