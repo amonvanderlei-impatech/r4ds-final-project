@@ -166,7 +166,7 @@ As **Figuras 16 - 20**, por sua vez, estabelecem uma relação entre os dados de
 
 ### ANÁLISE MUNICIPAL
 
-As **Figuras 21 - 25** apresentam gráficos de pontos que representam municípios e suas respectivas rendas médias (eixo x) e notas médias (eixo y) em cada um dos anos de 2020 - 2024, com os municípios selecionados em destaque. Observa-se que municípios com maiores rendas médias tendem a também terem notas médias mais altas, representado no gráfico pela linha de tendência. Apesar da variação das notas com o passar dos anos, como as rendas médias não se alteram muito de um ano para o outro, podemos verificar que a forma do gráfico se mantém a mesma, evidenciando que essa relação não depende do ano de análise.
+As **Figuras 21 - 25** apresentam gráficos de dispersão que representam municípios e suas respectivas rendas médias (eixo x) e notas médias (eixo y) em cada um dos anos de 2020 - 2024, com os municípios selecionados em destaque. Observa-se que municípios com maiores rendas médias tendem a também terem notas médias mais altas, representado no gráfico pela linha de tendência.
 
 \clearpage
 
@@ -216,11 +216,15 @@ A estabilidade temporal das correlações sugere que a relação entre renda e d
 
 Através das análises estaduais, vemos que os estados com desempenho considerado inferior no exame apresentam uma maior razão entre nota média e renda média. Isso pode indicar que, caso houvesse uma distribuição mais igualitária de renda no país, poderíamos observar uma homogeneização ou uma inversão dos resultados obtidos atualmente. Outra interpretação possível é que como, apesar da alta desigualdade de renda entre os estudantes, a diferença entre as notas médias não é muito significativa, isso poderia indicar que, apesar de haver uma relação entre a nota média e a renda média, existem outros fatores que influenciam significativamente mais nos resultados dos participantes. No nível estadual, as observações se monstraram constantes em todas as edições analisadas, o que reforça a proposta de que tais relações são resultados de processos estruturais que atuam em grandes escalas de tempo.
 
+```{=html}
 <!--
 Ao contrário de um impacto pontual ou causado por alguma interferência externa em determinado período de tempo, como é o caso do estado do Rio Grande do Sul que apesar de apresentar um crescimento significativo nos resultados do exame entre os anos de 2020 e 2023, na edição de 2024 apresentou uma queda para um desempenho próximo ao que havia obtido na edição de 2021, o que pode se relacionar com a crise climática enfrentada pelo estado no ano respectivo.
 -->
+```
 
 <!-- TODO: Por que as diferenças existem (Estadual e Municipal)-->
+
+Na análise municipal, podemos verificar que os pontos dos gráficos de dispersão desenham o mesmo formato, evidenciando que independente do ano análisado a relação entre nota e renda é positiva. Também podemos verificar que nos municípios onde a razão entre nota e renda é menor esse número varia menos entre os anos análisados. O que corrobora com as análises realizadas ao longo do estudo.
 
 ## CONCLUSÃO E OBSERVAÇÕES
 
