@@ -237,7 +237,7 @@ ggsave("plots/municipalities/nota20.png")
 ggplot(mapatotal) + theme_bw() +
   geom_sf(aes(fill = RAZAO), color = NA) +
   scale_fill_viridis_c(option = "plasma", direction = -1, na.value = "white") +
-  facet_wrap(~ ANO) +
+  facet_wrap(~ ANO, ncol = 3) +
   labs(title = "Razão entre nota e renda do município por ano (2020 - 2024)",
        fill = "Razão",
        caption = "Fonte: INEP - Microdados ENEM") +
